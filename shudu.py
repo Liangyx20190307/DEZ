@@ -1,4 +1,5 @@
 import pygame
-print("Ğ¤ÔÂÃ÷±¨µ½ÒÑ¾Ã")
-print("ÁºÄ³±¨µÀ")
-print("df±¨µÀ")
+print("è‚–æœˆæ˜æŠ¥åˆ°å·²ä¹…")
+print("æ¢æŸæŠ¥é“")
+print("dfæŠ¥é“")
+print("lsjæŠ¥é“")
