@@ -15,7 +15,7 @@ def print_grid(arr):
     for i in range(9):
         print(arr[i])
 
-
+#得到这行里已经用过的数
 def get_row(row):
     row_arr = []
     for v in matrix[row]:
