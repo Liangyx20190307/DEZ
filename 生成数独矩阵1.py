@@ -10,7 +10,7 @@ def get_random_unit():
     random.shuffle(_num_list)
     return _num_list
 
-
+#打印出矩阵arr中的每一列
 def print_grid(arr):
     for i in range(9):
         print(arr[i])
