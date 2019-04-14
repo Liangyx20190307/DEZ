@@ -1,0 +1,160 @@
+数独游戏的设计
+代码的核心思想：
+利用深度优先搜索，当搜索到的节点满足条件，则搜索下一点，否则回退。
+public void getSudoku(int [][] array, LEVEL level) {
+		
+                  clear(array);
+		
+                  int row = 1, check1 = 10, check2 = 10, check3 = 10;
+		
+                 int time = 0, i = 0, j = 0;
+		
+                 for (i = 0; i < 9; i++) {
+			
+                      // 尝试填充的数字次数
+			
+                      time = 0;
+			
+                     // 填充数字
+			
+                    for (j = 0; j < 9; j++) {
+				
+                             row++;
+				
+                            // 产生数字
+				
+                           array[i][j] = generateNum(time);
+				
+                         // 如果返回值为0，则代表卡住，退回处理
+				
+                       // 退回处理的原则是：如果不是第一列，则先倒退到前一列，否则倒退到前一行的最后一列
+			if (array[i][j] == 0) {
+					
+                     // 解决死循环，不一定要模上13
+					
+                          if (row % 13 == 0){
+						
+                                         check1 = i;
+					
+                         }
+					
+                        else if (row % 13 == 5){
+						
+                                  check2 = i;
+					
+                        }else if (row % 13 == 11){
+						
+                                  check3 = i;
+					
+                       }
+					
+                        if (check1 == check2 && check2 == check3) {
+						                             i = 0;
+						
+                             j = -1;
+						
+                             clear(array);//就是清空生成的数字
+						
+                            time = 0;
+						
+                            row = 0;
+						
+                           continue;
+					
+                    }
+					
+                   // 不是第一列，则倒退一列
+					
+                       if (j > 0) {
+						
+                               j -= 2;
+						
+                               continue;
+					
+                 } else {// 是第一列，则倒退到上一行的最后一列
+						
+                            i -= 1;
+						
+                           j = 8;
+						
+                           continue;
+					
+                   }
+				}
+				
+                  // 填充成功
+				
+                    if (checkValid(array, i, j)) {
+					
+                                 // 初始化time，为下一次填充做准备
+					
+                                 time = 0;
+				
+                   } else { // 继续填充
+					
+                             // 次数增加1
+					
+                            time++;
+					
+                           // 继续填充当前格
+					
+                          j--;
+ 
+				
+                                }
+			
+                        }
+		
+                     }
+
+下面判断数独的规则的代码：
+
+public boolean checkValid(int[][] array, int row, int col) {
+		
+                           for(int i =0; i < row; i++){//检查行
+			
+                                      if(array[i][col] == array[row][col]){
+				
+                                                  return false;
+			
+                                  }
+		
+                            }
+		
+		
+                         for(int i =0; i < col; i++){//检查列
+			
+                                     if(array[row][i] == array[row][col]){
+				
+                                                           return false;
+			
+                                  }
+		
+                             }
+		
+		
+                            int MINROW = row / 3 * 3;
+		
+                            int MINCOL = col / 3 * 3;
+		
+                            for(int i = MINROW; i <= row; i++){//检查小正方形
+			
+                                       for(int j = MINCOL; j < MINCOL + 3; j++){
+				
+                                                 if(i != row && j != col){
+					
+                                                          if(array[i][j] == array[row][col]){
+						                                                                      return false;
+					
+                                                                 }
+				
+                                                       }
+			
+                                             }
+		
+                                      }
+		
+                                      return true;
+	
+                          }
+
