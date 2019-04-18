@@ -155,6 +155,41 @@ public boolean checkValid(int[][] array, int row, int col) {
                                       }
 		
                                       return true;
+
+
+
+二、设计与实现过程
+思想：首先是Android图形编程，
+
+要创建color.xml文件定义颜色，用paint和canvas对象来绘制图形和字符。
+
+绘制出九宫格，然后要在九宫格里随机放置数字。
+
+
+
+初始化九宫格的数据
+
+private final String str = "360000000004230800000004200"
++ "070460003820000014500013020"
++ "001900000007048300000000045";
+
+private int sudoku[] = new int[9 * 9];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
                           }
 
