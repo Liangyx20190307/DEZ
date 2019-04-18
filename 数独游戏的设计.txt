@@ -236,9 +236,6 @@ public boolean onTouchEvent(MotionEvent event) {
 
  }
 
-创建一个数组存放已经不可用的数据
-
-private int used[][][] = new int[9][9][];
 
  
 
