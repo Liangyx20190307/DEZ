@@ -176,6 +176,72 @@ private final String str = "360000000004230800000004200"
 private int sudoku[] = new int[9 * 9];
 
 
+三：定义一个类
+public class ShuduView extends View{
+
+//单元格的宽度和高度
+private float width;
+private float height;
+private int selectedX;
+private int selectedY;
+
+private Game game = new Game();
+
+public ShuduView(Context context) {
+super(context);
+}
+
+继承View，复写View的onDraw函数，在onDraw当中使用Canvas和Paint对象绘制图形。
+protected void onDraw(Canvas canvas) {
+//生成用于绘制背景色的画笔
+Paint backgroundPaint = new Paint();
+//设置画笔的颜色
+backgroundPaint.setColor(getResources().getColor(R.color.shudu_background));
+//绘制背景色
+canvas.drawRect(0, 0, getWidth(), getHeight(), backgroundPaint);
+
+Paint darkPaint = new Paint();
+darkPaint.setColor(getResources().getColor(R.color.shudu_dark));
+
+Paint hilitePaint = new Paint();
+hilitePaint.setColor(getResources().getColor(R.color.shudu_hilite));
+
+Paint lightPaint = new Paint();
+lightPaint.setColor(getResources().getColor(R.color.shudu_light));
+for(int i = 0; i < 9 ;i++){
+//一下两行代码用户绘制横向的单元格线
+canvas.drawLine(0, i * height, getWidth(), i * height,lightPaint);
+canvas.drawLine(0, i * height + 1, getWidth(), i * height + 1, hilitePaint);
+
+canvas.drawLine(i * width, 0, i * width, getHeight(), lightPaint);
+canvas.drawLine(i * width + 1, 0, i * width + 1, getHeight(), hilitePaint);
+}
+ 
+
+//单点触摸事件
+
+//获取玩家点击的地方
+
+public boolean onTouchEvent(MotionEvent event) {
+
+  //获取事件的种类
+
+  event.getAction();
+
+  //获取点击的坐标
+
+  event.getX();
+
+  event.getY();
+
+ }
+
+创建一个数组存放已经不可用的数据
+
+private int used[][][] = new int[9][9][];
+
+ 
+
 
 
 
