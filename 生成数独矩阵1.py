@@ -1,3 +1,4 @@
+#-*-co0ding:utf-8-*-
 import random
 import math
 
@@ -119,6 +120,7 @@ def main():
             i += 1
 
     print_grid(matrix)
+    print("完整的矩阵")
     print(count)
 
 
