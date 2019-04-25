@@ -122,7 +122,3 @@ def main():
     print_grid(matrix)
     print("ÍêÕûµÄ¾ØÕó")
     print(count)
-
-
-if __name__ == "__main__":
-    main()
