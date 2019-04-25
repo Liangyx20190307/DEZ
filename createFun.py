@@ -3,18 +3,18 @@ import math
 #from main import *
 
 matrix = []
-# ç”Ÿæˆä¸€ä¸ªéšæœºçš„æ•°ç»„
+# Éú³ÉÒ»¸öËæ»úµÄÊı×é
 def get_random_unit():
     _num_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    random.shuffle(_num_list)#éšæœºæ‰“ä¹±åºåˆ—é¡ºåº
+    random.shuffle(_num_list)#Ëæ»ú´òÂÒĞòÁĞË³Ğò
     return _num_list
 
-#æ‰“å°å‡ºçŸ©é˜µarrä¸­çš„æ¯ä¸€åˆ—
+#´òÓ¡³ö¾ØÕóarrÖĞµÄÃ¿Ò»ÁĞ
 def print_grid(arr):
     for i in range(9):
         print(arr[i])
 
-#å¾—åˆ°è¿™è¡Œé‡Œå·²ç»ç”¨è¿‡çš„æ•°
+#µÃµ½ÕâĞĞÀïÒÑ¾­ÓÃ¹ıµÄÊı
 def get_row(row):
     row_arr = []
     for v in matrix[row]:
@@ -23,7 +23,7 @@ def get_row(row):
         row_arr.append(v)
     return row_arr
 
-#å¾—åˆ°è¿™åˆ—é‡Œå·²ç»ç”¨è¿‡çš„æ•°
+#µÃµ½ÕâÁĞÀïÒÑ¾­ÓÃ¹ıµÄÊı
 def get_col(col):
     col_arr = []
     for i in range(9):
@@ -33,7 +33,7 @@ def get_col(col):
         col_arr.append(matrix[i][col])
     return col_arr
 
-#å¾—åˆ°è¿™ä¸ªå®«å·²ç»ç”¨è¿‡çš„æ•°
+#µÃµ½Õâ¸ö¹¬ÒÑ¾­ÓÃ¹ıµÄÊı
 def get_block(num):
     col_arr = []
     seq = num % 3
@@ -46,32 +46,32 @@ def get_block(num):
                 col_arr.append(matrix[i][j])
     return col_arr
 
-#å¾—åˆ°æ‰€åœ¨çš„ç¬¬å‡ å®«ï¼ˆ1åˆ°9ï¼‰
+#µÃµ½ËùÔÚµÄµÚ¼¸¹¬£¨1µ½9£©
 def get_block_seq(row, col):
-    col_seq = int(math.ceil((col + 0.1) / 3))#è¿›1å–æ•´
+    col_seq = int(math.ceil((col + 0.1) / 3))#½ø1È¡Õû
     row_seq = int(math.ceil((row + 0.1) / 3))
     return 3 * (row_seq - 1) + col_seq
 
-#è·å–å¯èƒ½çš„å¡«å…¥çš„æ•°
+#»ñÈ¡¿ÉÄÜµÄÌîÈëµÄÊı
 def get_enable_arr(row, col):
-    avail_arr = get_random_unit()#å¾—åˆ°ä¹±åºçš„1åˆ°9
-    seq = get_block_seq(row, col)#å¾—åˆ°æ‰€èµ·çš„å®«å·ï¼ˆ1åˆ°9ï¼‰
+    avail_arr = get_random_unit()#µÃµ½ÂÒĞòµÄ1µ½9
+    seq = get_block_seq(row, col)#µÃµ½ËùÆğµÄ¹¬ºÅ£¨1µ½9£©
     block = get_block(seq)
     row = get_row(row)
     col = get_col(col)
     unable_arr = list(set(block + row + col))
     for v in unable_arr:
         if v in avail_arr:
-            avail_arr.remove(v)#æŠŠä¸å¯èƒ½å¡«å…¥çš„æ•°æ’å‡ºå»
+            avail_arr.remove(v)#°Ñ²»¿ÉÄÜÌîÈëµÄÊıÅÅ³öÈ¥
     return avail_arr
 def createSD():
     can_num = {}#
-    # åˆå§‹åŒ–ä¸€ä¸ª9è¡Œ9åˆ—çš„æ•°ç»„ï¼Œåˆå€¼éƒ½ä¸º0
+    # ³õÊ¼»¯Ò»¸ö9ĞĞ9ÁĞµÄÊı×é£¬³õÖµ¶¼Îª0
     for i in range(9):
         matrix.append([0] * 9)
 
     
-    #ä¿å­˜è¿˜æœªå¡«å…¥æ•°å­—çš„ç©ºæ ¼çš„ä½ç½®
+    #±£´æ»¹Î´ÌîÈëÊı×ÖµÄ¿Õ¸ñµÄÎ»ÖÃ
     box_list = []
     for row in range(9):
         for col in range(9):
@@ -79,8 +79,8 @@ def createSD():
                 box_list.append({'row': row, 'col': col})
 
     i = 0
-    while i < len(box_list):   #æœªå¡«æ»¡æ—¶å¾ªç¯
-        position = box_list[i]#ç”¨iæ¥è¯»å–æœªå¡«å…¥æ•°å­—çš„ä½ç½®è¡¨ç¤ºçš„å­—å…¸
+    while i < len(box_list):   #Î´ÌîÂúÊ±Ñ­»·
+        position = box_list[i]#ÓÃiÀ´¶ÁÈ¡Î´ÌîÈëÊı×ÖµÄÎ»ÖÃ±íÊ¾µÄ×Öµä
         row = position['row']
         col = position['col']
         key = '%dx%d' % (row, col)
@@ -89,17 +89,14 @@ def createSD():
             enable_arr = can_num[key]
         else:
             enable_arr = get_enable_arr(row, col)
-            can_num[key] = enable_arr #ä»¥ä½ç½®ä¸ºé”®å¯èƒ½æ”¾å…¥çš„æ•°åˆ—è¡¨ä¸ºå€¼å­˜å…¥å­—å…¸
-        if len(enable_arr) <= 0:#æ²¡æœ‰å¯å¡«å…¥æ•°å­—æ—¶ï¼Œå›é€€ä¸€ä¸ªæ ¼å­åœ¨é‡æ–°æ–°é€‰å…¥ä¸€ä¸ªæ–°çš„å¯èƒ½å€¼å¡«å…¥
+            can_num[key] = enable_arr #ÒÔÎ»ÖÃÎª¼ü¿ÉÄÜ·ÅÈëµÄÊıÁĞ±íÎªÖµ´æÈë×Öµä
+        if len(enable_arr) <= 0:#Ã»ÓĞ¿ÉÌîÈëÊı×ÖÊ±£¬»ØÍËÒ»¸ö¸ñ×ÓÔÚÖØĞÂĞÂÑ¡ÈëÒ»¸öĞÂµÄ¿ÉÄÜÖµÌîÈë
             i -= 1                 
             if key in can_num:     
                 del (can_num[key])
             matrix[row][col] = 0
-            continue  #ç»“æŸæœ¬æ¬¡å¾ªç¯
+            continue  #½áÊø±¾´ÎÑ­»·
         else:
-            matrix[row][col]= enable_arr.pop()#ä»å¯èƒ½æ•°å­—ä¸­æ¢å‡ºæœ€åä¸€ä¸ªå¡«å…¥
+            matrix[row][col]= enable_arr.pop()#´Ó¿ÉÄÜÊı×ÖÖĞÌ½³ö×îºóÒ»¸öÌîÈë
             i += 1
     return matrix
-createSD()
-print("å®Œæ•´çŸ©é˜µ")
-print_grid(matrix)
