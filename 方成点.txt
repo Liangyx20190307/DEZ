@@ -1,0 +1,6 @@
+def print_grid(arr):
+    for i in range(9):
+        for j in range(9):
+            # 注意，在py3.x中，print函数默认都有换行
+            print(arr[i][j], end="")
+        print()
